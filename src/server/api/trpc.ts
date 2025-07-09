@@ -10,32 +10,24 @@
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
-
-import { auth } from "~/server/auth";
 import { db } from "~/server/db";
+import { getToken } from "next-auth/jwt";
+import { authConfig } from "~/server/auth/config";
 
-/**
- * 1. CONTEXT
- *
- * This section defines the "contexts" that are available in the backend API.
- *
- * These allow you to access things when processing a request, like the database, the session, etc.
- *
- * This helper generates the "internals" for a tRPC context. The API handler and RSC clients each
- * wrap this and provides the required context.
- *
- * @see https://trpc.io/docs/server/context
- */
 export const createTRPCContext = async (opts: { headers: Headers }) => {
-  const session = await auth();
+  const token = await getToken({
+    req: {
+      headers: Object.fromEntries(opts.headers),
+    } as any,
+    secret: authConfig.secret,
+  });
 
   return {
     db,
-    session,
+    session: token ? { user: { id: token.sub! } } : null,
     ...opts,
   };
 };
-
 /**
  * 2. INITIALIZATION
  *

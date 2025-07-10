@@ -1,6 +1,5 @@
 import React from "react";
 import Taskbar from "~/components/ui/taskbar";
-import LogoutButton from "~/components/Logout";
 
 export default function MainPage() {
     return (

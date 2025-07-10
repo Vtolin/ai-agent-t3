@@ -8,10 +8,10 @@ export default async function Home() {
 
       <main className="flex min-h-screen flex-col items-center justify-center gap-6 p-6 bg-gray-900 text-gray-100">
       <div className="text-center">
-        <h1 className="text-4xl font-bold">🧠 AI Agent T3 App</h1>
-        <p className="mt-2 text-lg text-gray-300">
-          {hello?.greeting || "Loading..."}
-        </p>
+        <p className="mt-2 md:text-lg text-gray-300">
+          {hello?.greeting}
+        </p>        
+        <h1 className="md:text-4xl text-2xl font-bold">LearnMaxxing with AI Agent</h1>
       </div>
 
       <div className="text-center">
@@ -21,7 +21,7 @@ export default async function Home() {
               href="/api/auth/signin"
               className="mt-4 inline-block rounded-lg bg-gray-800 px-4 py-2 text-white hover:bg-gray-700 transition"
             >
-              Sign in
+              Sign in with Google
             </Link>
           </>
       </div>

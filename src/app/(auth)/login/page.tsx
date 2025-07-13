@@ -17,7 +17,7 @@ export default function LoginPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-gray-900">
       <div className="rounded-lg bg-white p-8 shadow-md w-full max-w-sm text-center">
-        <h1 className="text-2xl font-bold mb-4">Welcome to AI Agent</h1>
+        <h1 className="text-2xl font-bold mb-4">Welcome to EduPilot</h1>
 
         <button
           onClick={() => signIn("google", { callbackUrl: "/main" })}

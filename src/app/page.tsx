@@ -1,6 +1,19 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { auth } from "~/server/auth";
 
 export default async function Home() {
+let session;
+  try {
+    session = await auth();
+  } catch (error) {
+    console.error("Auth error:", error);
+    session = null;
+  }
+  
+  if (session?.user) {
+    redirect('/main');
+  }
   return (
 
       <main className="flex min-h-screen flex-col items-center justify-center gap-6 p-6 bg-gray-900 text-gray-100">

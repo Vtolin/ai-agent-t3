@@ -9,7 +9,7 @@ const Taskbar = () => {
 
   const navItems = [
     { name: "Main", href: "/main" },
-    { name: "Settings", href: "/about" },
+    { name: "Settings", href: "/setting" },
   ];
   return (
     <div className="fixed top-0 right-0 left-0 z-50 shadow-lg backdrop-blur-md">
